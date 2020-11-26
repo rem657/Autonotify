@@ -15,13 +15,15 @@ class Bot_I_need_card_plz():
         while(True):
             driver = self.open_web(URL)
             elems = driver.find_elements_by_class_name("item-cells-wrap")
+            cards = []
             if len(elems) > 1:
-                try:
-                    cards = elems[0].find_elements_by_class_name("item-cell") + elems[1].find_elements_by_class_name("item-cell")
-                except Exception as e:
-                    print(e)
-                    driver.close()
-                    continue
+                for sections in elems:
+                    try:
+                        cards += sections.find_elements_by_class_name("item-cell")# + elems[1].find_elements_by_class_name("item-cell")
+                    except Exception as e:
+                        print(e)
+                        driver.close()
+                        continue
             else:
                 try:
                     cards = elems[0].find_elements_by_class_name("item-cell")
@@ -56,7 +58,7 @@ class Bot_I_need_card_plz():
                 if name not in temp_name:
                     self.list_found.remove(name)
             driver.close()
-            sleep(random.normal(loc = 60, scale = 6, size =(1,))[0])
+            sleep(((random.normal(loc = 10, scale = 5, size =(1,))[0])**2)**(0.5))
 
     @staticmethod
     def get_name(card) -> str:

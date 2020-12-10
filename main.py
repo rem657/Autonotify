@@ -33,7 +33,11 @@ class Bot_I_need_card_plz():
                     continue
             list_available = []
             for card in cards:
-                available = self.is_available(card)
+                try:
+                    available = self.is_available(card)
+                except:
+                    print(self.get_name(card))
+                    continue
                 # print(available)
                 if available:
                 # list_available = []

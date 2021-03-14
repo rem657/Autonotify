@@ -95,14 +95,14 @@ class Bot_I_need_card_plz():
         :return:
         """
         list_cred = []
-        with open("credential.txt","r") as cred:
+        with open("user/credential.txt", "r") as cred:
             list_cred.append(cred.readline()[:-1])
             list_cred.append(cred.readline())
         return tuple(list_cred)
 
     @staticmethod
     def get_send_to():
-        with open("payroll.txt", "r") as cred:
+        with open("user/payroll.txt", "r") as cred:
             list_send_to = cred.readlines()
         for index,elem in enumerate(list_send_to):
             if index != len(list_send_to) - 1:
